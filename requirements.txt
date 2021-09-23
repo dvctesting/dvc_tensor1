@@ -2,7 +2,7 @@ featurewiz==0.0.42
 imbalanced-learn==0.8.0
 imblearn==0.0
 numpy==1.16.6
-pandas==1.2.3
+pandas
 sklearn==0.0
 ujson==4.1.0
 seaborn==0.11.1
