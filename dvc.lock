@@ -1,0 +1,28 @@
+schema: '2.0'
+stages:
+  feature_importance:
+    cmd: python .\src\Feature_importance.py
+    deps:
+    - path: .\data\Full_Features.csv
+      md5: 52fb72cbaaed76738443eefa30f94d9c
+      size: 25572541
+    - path: .\src\Feature_importance.py
+      md5: fb7dd55126e1c07099caf8a51b0635ff
+      size: 349
+    outs:
+    - path: .\data\Feature_Importance.csv
+      md5: a81f8cb708a86c0d4ccbb106c2be6642
+      size: 2856361
+  model_train:
+    cmd: python model_training.py
+    deps:
+    - path: .\data\Feature_Importance.csv
+      md5: a81f8cb708a86c0d4ccbb106c2be6642
+      size: 2856361
+    - path: .\model_training.py
+      md5: 9e2385d1b26f1d3e3eca2349d5cd5270
+      size: 1441
+    outs:
+    - path: metrics.json
+      md5: a353e651fa96b2fd2e3b612ba47dfde0
+      size: 32
