@@ -3,11 +3,14 @@ import numpy as np
 import pandas as pd
 import json
 from sklearn import metrics
+import matplotlib.pyplot as plt
 from imblearn.over_sampling import RandomOverSampler
 from imblearn.combine import SMOTETomek
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import average_precision_score
 import yaml
 
 
@@ -27,9 +30,14 @@ target = "Label"
 X = data[columns]
 Y = data[target]
 
+
+
 # Balanced the inbalanced dataset
 oversample =  RandomOverSampler(sampling_strategy='minority')
 X_res, y_res = oversample.fit_resample(X, Y)
+
+print(len(y_res))
+print(len(Y))
 
 # train test split
 X_train, X_test, y_train, y_test = train_test_split(X_res, y_res, test_size=0.3)

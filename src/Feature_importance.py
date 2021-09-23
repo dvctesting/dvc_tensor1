@@ -1,6 +1,7 @@
 # importing library
 import pandas as pd
 from featurewiz import featurewiz
+import matplotlib.pyplot as plt
 import yaml
 
 feature_count = yaml.safe_load(open("params.yaml"))["no_of_features"]
@@ -23,6 +24,7 @@ for i in features[0]:
         break
     count +=1
 x["Label"] = df.iloc[:,-1:]
+
 
 # saving csv file
 x.to_csv("./data/Feature_Importance.csv")

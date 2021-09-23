@@ -16,3 +16,10 @@ stages:
     metrics:
     - metrics.json:
         cache: false
+  report_generator:
+    cmd: python report.py
+    deps:
+    - metrics.json
+    - report.py
+    outs:
+    - Report.md

@@ -4,25 +4,41 @@ stages:
     cmd: python .\src\Feature_importance.py
     deps:
     - path: .\data\Full_Features.csv
-      md5: 52fb72cbaaed76738443eefa30f94d9c
+      md5: a1974ea98bf0e52e661da23127aee798
       size: 25572541
     - path: .\src\Feature_importance.py
-      md5: fb7dd55126e1c07099caf8a51b0635ff
-      size: 349
+      md5: 298d7b6506f87dd24cad4cd3bdc95139
+      size: 747
+    params:
+      params.yaml:
+        no_of_features: 300
     outs:
     - path: .\data\Feature_Importance.csv
-      md5: a81f8cb708a86c0d4ccbb106c2be6642
-      size: 2856361
+      md5: 42b946ebee9c9cea9ca2f14045e616d1
+      size: 2527838
   model_train:
     cmd: python model_training.py
     deps:
     - path: .\data\Feature_Importance.csv
-      md5: a81f8cb708a86c0d4ccbb106c2be6642
-      size: 2856361
+      md5: 42b946ebee9c9cea9ca2f14045e616d1
+      size: 2527838
     - path: .\model_training.py
-      md5: 9e2385d1b26f1d3e3eca2349d5cd5270
-      size: 1441
+      md5: a23d82a15b10987a299a3682131e2c47
+      size: 1636
     outs:
     - path: metrics.json
-      md5: a353e651fa96b2fd2e3b612ba47dfde0
+      md5: 7d4c7c0cec944f706f5a2829e6dc605f
       size: 32
+  report_generator:
+    cmd: python report.py
+    deps:
+    - path: metrics.json
+      md5: 7d4c7c0cec944f706f5a2829e6dc605f
+      size: 32
+    - path: report.py
+      md5: b0474259ded0fbdd5682b67f7f29b445
+      size: 516
+    outs:
+    - path: Report.md
+      md5: b59f3662becca6703a4ce036333aa0a4
+      size: 116
