@@ -1,23 +1,23 @@
 stages:
   feature_importance:
-    cmd: python .\src\Feature_importance.py
+    cmd: python dvc_tensor1\src\Feature_importance.py
     deps:
-    - .\src\Feature_importance.py
-    - .\data\Full_Features.csv
+    - dvc_tensor1\src\Feature_importance.py
+    - dvc_tensor1\data\Full_Features.csv
     params:
     - no_of_features
     outs:
-    - .\data\Feature_Importance.csv
+    - dvc_tensor1\data\Feature_Importance.csv
   model_train:
-    cmd: python model_training.py
+    cmd: python dvc_tensor1\model_training.py
     deps:
-    - .\data\Feature_Importance.csv
-    - .\model_training.py
+    - dvc_tensor1\data\Feature_Importance.csv
+    - dvc_tensor1\model_training.py
     metrics:
     - metrics.json:
         cache: false
   report_generator:
-    cmd: python report.py
+    cmd: python dvc_tensor1\report.py
     deps:
     - metrics.json
     - report.py
