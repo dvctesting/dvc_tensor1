@@ -1,17 +1,17 @@
 stages:
   feature_importance:
-    cmd: python src\Feature_importance.py
+    cmd: python src/Feature_importance.py
     deps:
-    - src\Feature_importance.py
-    - data\Full_Features.csv
+    - src/Feature_importance.py
+    - data/Full_Features.csv
     params:
     - no_of_features
     outs:
-    - data\Feature_Importance.csv
+    - data/Feature_Importance.csv
   model_train:
     cmd: python model_training.py
     deps:
-    - data\Feature_Importance.csv
+    - data/Feature_Importance.csv
     - model_training.py
     metrics:
     - metrics.json:
