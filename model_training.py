@@ -40,7 +40,7 @@ print(len(y_res))
 print(len(Y))
 
 # train test split
-X_train, X_test, y_train, y_test = train_test_split(X_res, y_res, test_size=0.3)
+X_train, X_test, y_train, y_test = train_test_split(X_res, y_res, test_size=0.2)
 
 # Using Random forest classifier to create classification model 
 clf=RandomForestClassifier(n_estimators=100)
