@@ -23,13 +23,14 @@ jobs:
           
         run: |
           # Your ML workflow goes here
-          pip install -r ./requirements.txt
-          dvc repro
+          python3 temp.py
+          #pip install -r ./requirements.txt
+          #dvc repro
           
           # python ./src/Feature_importance.py
           # python model_training.py
           # python report.py
           
           # Post reports as comments in GitHub PRs
-          cat Report.md >> report.md
-          cml-send-comment report.md
+          #cat Report.md >> report.md
+          #cml-send-comment report.md
