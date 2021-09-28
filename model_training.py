@@ -34,7 +34,7 @@ Y = data[target]
 
 # Balanced the inbalanced dataset
 oversample =  RandomOverSampler(sampling_strategy='minority')
-X_res, y_res = oversample.fit_resample(X, Y)
+X_res, y_res = oversample.fit_sample(X, Y)
 
 print(len(y_res))
 print(len(Y))
