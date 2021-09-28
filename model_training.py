@@ -1,17 +1,12 @@
-# importing library
 import numpy as np
 import pandas as pd
 import json
 from sklearn import metrics
 import matplotlib.pyplot as plt
 from imblearn.over_sampling import RandomOverSampler
-from imblearn.combine import SMOTETomek
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import precision_recall_curve
-from sklearn.metrics import average_precision_score
-import yaml
+from dtreeviz.trees import *
+
 
 
 
@@ -36,20 +31,25 @@ Y = data[target]
 oversample =  RandomOverSampler(sampling_strategy='minority')
 X_res, y_res = oversample.fit_resample(X, Y)
 
-print(len(y_res))
-print(len(Y))
 
 # train test split
 X_train, X_test, y_train, y_test = train_test_split(X_res, y_res, test_size=0.3)
 
 # Using Random forest classifier to create classification model 
-clf=RandomForestClassifier(n_estimators=100)
-clf.fit(X_train,y_train)
+model = tree.DecisionTreeClassifier()
+model.fit(X_train,y_train)
 
 # Pridicting the Y values using X_test
-y_pred=clf.predict(X_test)
+y_pred=model.predict(X_test)
 # Comparing and finding the accurecy of model
 acc= metrics.accuracy_score(y_test, y_pred)
+print(acc)
+viz = dtreeviz(model,
+                X_train,
+                y_train,
+                feature_names = columns, class_names= [ 7,  6,  4,  1, 10,  8, 13])
+
+viz.save("dtree.svg")
 
 # Saving accuracy to the metrics.json file
 with open("metrics.json", 'w') as outfile:
