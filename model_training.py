@@ -8,7 +8,8 @@ from sklearn.model_selection import train_test_split
 from dtreeviz.trees import *
 
 
-
+import os
+os.environ["PATH"] += os.pathsep + '/usr/lib/x86_64-linux-gnu/graphviz'
 
 # reading csv file
 data = pd.read_csv("./data/Feature_Importance.csv")
