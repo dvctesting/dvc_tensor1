@@ -54,7 +54,7 @@ print(acc)
 # viz.save("dtree.svg")
 
 
-fig, axes = plt.subplots(figsize = (6,6), dpi=100)
+fig, axes = plt.subplots(figsize = (3,3), dpi=100)
 # figure = plt.gcf()
 
 # figure.set_size_inches(8, 6)
