@@ -2,9 +2,11 @@ name: dvc_tensorflow_body
 on: [push]
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,testing,test]
+    container:
+      image: docker://iterativeai/cml:0-dvc2-base1-gpu
     # optionally use a convenient Ubuntu LTS + DVC + CML image
-    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+    # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
       # may need to setup NodeJS & Python3 on e.g. self-hosted
@@ -14,7 +16,7 @@ jobs:
       # - uses: actions/setup-python@v2
       #   with:
       #     python-version: '3.x'
-      - uses: iterative/setup-cml@v1
+      # - uses: iterative/setup-cml@v1
       - name: cml_run
         shell: bash
         env:
@@ -23,7 +25,7 @@ jobs:
           
         run: |
           # Your ML workflow goes here
-          pip install -r ./requirements.txt
+          pip3 install -r ./requirements.txt
           dvc repro
           
           # python ./src/Feature_importance.py
