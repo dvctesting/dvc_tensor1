@@ -57,7 +57,7 @@ print(acc)
 # fig, axes = plt.subplots(figsize = (3,3), dpi=100)
 figure = plt.gcf()
 
-figure.set_size_inches(8, 6)
+figure.set_size_inches(1,1)
 tree.plot_tree(model,max_depth=2)
 figure.savefig('dgraph.png',dpi=100)
 
