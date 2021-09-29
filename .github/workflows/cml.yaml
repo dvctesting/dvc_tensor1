@@ -26,13 +26,14 @@ jobs:
         run: |
           # Your ML workflow goes here
           pip3 install -r ./requirements.txt
-          dvc repro
+          #dvc repro
           
           # python ./src/Feature_importance.py
-          #python model_training.py
-          # python report.py
+          python model_training.py
+          python report.py
           
           # Post reports as comments in GitHub PRs
           cat Report.md >> report.md
+          echo "" >> report.md
           cml-publish dgraph.png --md >> report.md
           cml-send-comment report.md
