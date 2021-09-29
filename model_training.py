@@ -59,7 +59,7 @@ figure = plt.gcf()
 
 figure.set_size_inches(8, 6)
 tree.plot_tree(model,max_depth=2)
-fig.savefig('dgraph.png',dpi=100)
+figure.savefig('dgraph.png',dpi=100)
 
 # Saving accuracy to the metrics.json file
 with open("metrics.json", 'w') as outfile:
