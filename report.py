@@ -20,6 +20,5 @@ f.close()
 mdFile = MdUtils(file_name='Report', title='DVC ML Pipeline testing')
 mdFile.new_header(level=1, title='Accuracy of model is:')
 mdFile.new_paragraph("**Accuracy**: {} ".format(data['accuracy']))
-mdFile.new_paragraph(Html.image(path="./dgraph.png", align='center'))
 
 mdFile.create_md_file()
