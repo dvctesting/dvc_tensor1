@@ -54,7 +54,7 @@ print(acc)
 # viz.save("dtree.svg")
 
 
-fig, axes = plt.subplots(nrows = 1,ncols = 1,figsize = (4,4), dpi=100)
+fig, axes = plt.subplots(nrows = 1,ncols = 1,figsize = (6,6), dpi=100)
 tree.plot_tree(model,max_depth=2)
 fig.savefig('dgraph.png')
 
