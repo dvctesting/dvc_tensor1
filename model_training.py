@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import json
 from sklearn import metrics
+from sklearn import tree
 import matplotlib.pyplot as plt
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.model_selection import train_test_split
@@ -45,12 +46,17 @@ y_pred=model.predict(X_test)
 # Comparing and finding the accurecy of model
 acc= metrics.accuracy_score(y_test, y_pred)
 print(acc)
-viz = dtreeviz(model,
-                X_train,
-                y_train,
-                feature_names = columns, class_names= [ 7,  6,  4,  1, 10,  8, 13])
+# viz = dtreeviz(model,
+#                 X_train,
+#                 y_train,
+#                 feature_names = columns, class_names= [ 7,  6,  4,  1, 10,  8, 13])
 
-viz.save("dtree.svg")
+# viz.save("dtree.svg")
+
+
+fig, axes = plt.subplots(nrows = 1,ncols = 1,figsize = (4,4), dpi=300)
+tree.plot_tree(model,max_depth=2)
+fig.savefig('dgraph.png')
 
 # Saving accuracy to the metrics.json file
 with open("metrics.json", 'w') as outfile:
