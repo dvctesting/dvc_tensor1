@@ -8,3 +8,5 @@ ujson
 seaborn
 matplotlib
 mdutils
+dtreeviz
+graphviz

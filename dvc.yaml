@@ -1,6 +1,6 @@
 stages:
   feature_importance:
-    cmd: python src/Feature_importance.py
+    cmd: python3 src/Feature_importance.py
     deps:
     - src/Feature_importance.py
     - data/Full_Features.csv
@@ -9,7 +9,7 @@ stages:
     outs:
     - data/Feature_Importance.csv
   model_train:
-    cmd: python model_training.py
+    cmd: python3 model_training.py
     deps:
     - data/Feature_Importance.csv
     - model_training.py
@@ -17,7 +17,7 @@ stages:
     - metrics.json:
         cache: false
   report_generator:
-    cmd: python report.py
+    cmd: python3 report.py
     deps:
     - metrics.json
     - report.py
