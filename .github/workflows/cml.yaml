@@ -2,7 +2,7 @@ name: dvc_tensorflow_body
 on: [push]
 jobs:
   run:
-    runs-on: [self-hosted,cml,dvc]
+    runs-on: [self-hosted,testing,test]
     container:
       image: docker://iterativeai/cml:0-dvc2-base1-gpu
     # optionally use a convenient Ubuntu LTS + DVC + CML image
@@ -26,11 +26,11 @@ jobs:
         run: |
           # Your ML workflow goes here
           pip3 install -r ./requirements.txt
-          dvc repro
+          #dvc repro
           
           # python ./src/Feature_importance.py
-          # python model_training.py
-          # python report.py
+          python model_training.py
+          python report.py
           
           # Post reports as comments in GitHub PRs
           cat Report.md >> report.md
